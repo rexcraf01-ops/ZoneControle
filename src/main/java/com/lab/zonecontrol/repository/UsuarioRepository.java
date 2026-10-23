@@ -1,0 +1,13 @@
+package com.lab.zonecontrol.repository;
+import com.lab.zonecontrol.entity.Usuario;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import java.util.Optional;
+
+@Repository
+public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
+    Optional<Usuario> findByNombreUsuario(String nombreUsuario);
+    Optional<Usuario> findByEmailIgnoreCase(String email);
+    boolean existsByEmailIgnoreCaseAndIdUsuarioNot(String email, Integer idUsuario);
+    boolean existsByPersonal_IdPersonal(Integer idPersonal);
+}
